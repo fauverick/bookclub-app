@@ -1,4 +1,4 @@
-name: CI CD Bookclub
+name: CI Bookclub
 on:
     push:
         branches: [main]
@@ -6,8 +6,7 @@ jobs:
     docker:
         runs-on: ubuntu-latest
         steps:
-            -   name: Checkout
-                uses: actions/checkout@v2
+           
             -   name: Login Docker Hub
                 env:
                     DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
