@@ -1,0 +1,25 @@
+name: CI CD Bookclub
+on:
+    push:
+        branches: [main]
+jobs:
+    docker:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v2
+            -   name: Login Docker Hub
+                env:
+                    DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+                    DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+                run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+            -   name: Build Docker Image
+                run: docker build -t bookclub .
+
+            -   name: Push to Docker Hub
+                run: docker push fauverick/bookclub:latest
+
+    
+            
+            
