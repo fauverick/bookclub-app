@@ -10,13 +10,13 @@ jobs:
         steps:
            
             -   name: Pull Docker
-                run: docker pull fauverick/bookclub:latest
+                run: sudo docker pull fauverick/bookclub:latest
 
             -   name: Delete Old Docker Container 
-                run: docker rm -f bookclub-app || true
-                
+                run: sudo docker rm -f bookclub-app || true
+
             -   name: Run Docker Image
-                run: docker run --name bookclub-app -p 80:8000 -d --rm fauverick/bookclub:latest
+                run: sudo docker run --name bookclub-app -p 80:8000 -d --rm fauverick/bookclub:latest
 
             
 
